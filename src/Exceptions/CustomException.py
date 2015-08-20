@@ -1,0 +1,2 @@
+class ContoursException(Exception):
+    pass
