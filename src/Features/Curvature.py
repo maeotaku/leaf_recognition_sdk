@@ -3,7 +3,7 @@ from scipy import ndimage
 from scipy import interpolate
 from scipy import signal as sg
 from ImageCoreManipulation import *
-
+from StopWatch import *
 
 
 
