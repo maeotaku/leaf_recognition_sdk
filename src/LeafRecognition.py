@@ -4,6 +4,7 @@ import numpy as np
 import os
 from Disk import *
 import time
+import Features.Morphology as morph
 
 from LeafImages.LeafImage import LeafImage
 from Files import *
@@ -15,7 +16,6 @@ from Constants import *
 from Exceptions.CustomException import ContoursException
 from Experiments.Log import Log
 from Simulation.MobileSimulation import *
-
 
 print(os.path.dirname(ndimage.__file__))
 print(os.path.dirname(cv2.__file__))
@@ -74,8 +74,12 @@ if __name__ == '__main__':
     circumferences = generateDiskCircumferenceKernelsMasks(25)
     #disks = generateDiskKernels(25) #used for complex curvature based on paper
     
-    es = LeafImage(disks, circumferences, path="/Users/maeotaku/Documents/Issues/AA 1.jpeg")    
-    es.showImages()
+    es = LeafImage(disks, circumferences, path="/Users/maeotaku/Documents/Issues/AA 1.jpeg")
+    #es.showImages()
+    print(morph.calcLeafArea(es.finalSegImg)[0])
+    print(morph.calcLeafPerimeter(es.finalSegImg)[0])
+    morph.calcLeafWidthAndLength(es.finalSegImg)
+    
     
     #buildHistogramFiles("/Users/maeotaku/Documents/DatasetsNon1/Flavia/", [C.HIST_HCoS, C.HIST_LBP_R1P8, C.HIST_LBP_R2P16, C.HIST_LBP_R3P16, C.HIST_LBP_R1P8_R2P16_CONCAT, C.HIST_LBP_R1P8_R3P16_CONCAT, C.HIST_LBP_R2P16_R3P16_CONCAT], disks, circumferences)
     #buildHistogramFiles("/Users/maeotaku/Documents/DatasetsNon1/CostaRica/OnlyCamera/", [C.HIST_HCoS, C.HIST_LBP_R1P8, C.HIST_LBP_R2P16, C.HIST_LBP_R3P16, C.HIST_LBP_R1P8_R2P16_CONCAT, C.HIST_LBP_R1P8_R3P16_CONCAT, C.HIST_LBP_R2P16_R3P16_CONCAT], disks, circumferences)

@@ -45,12 +45,13 @@ class LeafImage(object):
         self.resizedLeafImg = self.normalizeLeafArea(self.img*self.segImg, segmentContours, area, C.STANDARD_LEAF_AREA)
         self.contoursImg = self.normalizeLeafArea(self.original, segmentContours, area, C.STANDARD_LEAF_AREA)
         self.finalSegImg = self.normalizeLeafArea(self.segImg, segmentContours, area, C.STANDARD_LEAF_AREA)
-       
+        '''
         self.thumbnail = resizeImage(self.contoursImg, 100, 75)
         contoursSmall = getContours(self.finalSegImg)
         cv2.drawContours(self.contoursImg, contoursSmall,-1,(0,0,255),2)
         self.curvature = Curvature(self.finalSegImg, contoursSmall, disks, circumferences)        
         self.texture = Texture(self.resizedLeafImg*self.finalSegImg)
+        '''
 
     def showImages(self):
         #showImage(self.original, "Original " + self.path)
